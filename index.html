@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBridge</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#eef7ef;
+    color:#333;
+}
+
+header{
+    background:#4caf50;
+    color:white;
+    text-align:center;
+    padding:35px;
+}
+
+header h1{
+    margin:0;
+    font-size:42px;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    margin-top:25px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.button{
+    background:#4caf50;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:10px;
+    font-size:15px;
+}
+
+.button:hover{
+    background:#388e3c;
+}
+
+select, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+textarea{
+    height:100px;
+}
+
+.avatar-box{
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+}
+
+.avatar{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    cursor:pointer;
+    border:3px solid transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    background:#f1f8e9;
+}
+
+.avatar.selected{
+    border:3px solid #4caf50;
+}
+
+.chat-box{
+    background:#f1f8e9;
+    border-radius:10px;
+    padding:15px;
+    margin-top:15px;
+    min-height:120px;
+}
+
+.message{
+    margin-bottom:12px;
+}
+
+.bot{
+    color:#2e7d32;
+    font-weight:bold;
+}
+
+.user{
+    color:#1565c0;
+    font-weight:bold;
+}
+
+.post{
+    background:#f5f5f5;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.comment{
+    background:#e8f5e9;
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px;
+    margin-left:20px;
+}
+
+.like{
+    color:#4caf50;
+    cursor:pointer;
+    margin-top:10px;
+    display:inline-block;
+}
+
+.result-box{
+    background:#f1f8e9;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MindBridge</h1>
+    <p>심리적 도움 접근성을 높이기 위한 맞춤형 상담 플랫폼</p>
+</header>
+
+<div class="container">
+
+<!-- 스트레스 테스트 -->
+
+<div class="card">
+
+<h2>📊 스트레스 테스트</h2>
+
+<p>1. 최근 쉽게 피곤함을 느낀다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>2. 작은 일에도 예민해진다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>3. 잠드는 데 어려움이 있다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>4. 집중이 잘 되지 않는다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>5. 이유 없이 불안감을 느낀다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>6. 사람 만나는 것이 부담스럽다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>7. 짜증이나 화가 자주 난다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>8. 무기력함을 느낀다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>9. 걱정이 많아졌다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<p>10. 최근 스트레스가 심하다고 느낀다.</p>
+<select class="stress">
+<option value="1">전혀 아니다</option>
+<option value="2">가끔 그렇다</option>
+<option value="3">자주 그렇다</option>
+<option value="4">매우 그렇다</option>
+</select>
+
+<button class="button" onclick="checkStress()">결과 확인</button>
+
+<div class="result-box" id="stressResult"></div>
+
+</div>
+
+<!-- AI 상담 챗봇 -->
+
+<div class="card">
+
+<h2>🤖 AI 상담 챗봇</h2>
+
+<label>챗봇 성격 선택</label>
+
+<select id="personality">
+<option value="warm">따뜻한 공감형</option>
+<option value="real">현실 조언형</option>
+<option value="calm">차분한 분석형</option>
+<option value="friend">친구 같은 유형</option>
+</select>
+
+<h3>아바타 선택</h3>
+
+<div class="avatar-box">
+
+<div class="avatar selected"
+onclick="selectAvatar(this)">
+🧑
+</div>
+
+<div class="avatar"
+onclick="selectAvatar(this)">
+👩
+</div>
+
+<div class="avatar"
+onclick="selectAvatar(this)">
+👨
+</div>
+
+<div class="avatar"
+onclick="selectAvatar(this)">
+🧠
+</div>
+
+</div>
+
+<textarea id="userInput"
+placeholder="고민을 입력해보세요"></textarea>
+
+<button class="button"
+onclick="sendMessage()">상담 시작</button>
+
+<div class="chat-box" id="chatBox"></div>
+
+</div>
+
+<!-- 익명 게시판 -->
+
+<div class="card">
+
+<h2>💬 익명 게시판</h2>
+
+<textarea id="postInput"
+placeholder="익명으로 고민을 작성해보세요"></textarea>
+
+<button class="button"
+onclick="addPost()">게시하기</button>
+
+<div id="posts"></div>
+
+</div>
+
+</div>
+
+<script>
+
+// 스트레스 테스트
+
+function checkStress(){
+
+let questions = document.querySelectorAll(".stress");
+
+let total = 0;
+
+questions.forEach((q)=>{
+total += parseInt(q.value);
+});
+
+let result = "";
+
+if(total <= 15){
+
+result =
+"😊 안정 상태<br><br>현재 심리 상태가 비교적 안정적입니다.";
+
+}
+
+else if(total <= 24){
+
+result =
+"🙂 가벼운 스트레스 상태<br><br>휴식과 감정 관리가 필요합니다.";
+
+}
+
+else if(total <= 33){
+
+result =
+"😐 중간 수준 스트레스<br><br>스트레스 관리 전략과 주변 도움을 고려해보세요.";
+
+}
+
+else{
+
+result =
+"🚨 높은 스트레스 상태<br><br>전문기관 상담 및 심리적 지원을 권장합니다.";
+
+}
+
+document.getElementById("stressResult").innerHTML = result;
+
+}
+
+// 아바타 선택
+
+function selectAvatar(element){
+
+let avatars = document.querySelectorAll(".avatar");
+
+avatars.forEach((a)=>{
+a.classList.remove("selected");
+});
+
+element.classList.add("selected");
+
+}
+
+// 챗봇 기능
+
+function sendMessage(){
+
+let input = document.getElementById("userInput").value;
+
+let personality =
+document.getElementById("personality").value;
+
+let chatBox =
+document.getElementById("chatBox");
+
+if(input.trim() === ""){
+
+alert("내용을 입력해주세요.");
+return;
+
+}
+
+let userMessage =
+document.createElement("div");
+
+userMessage.className = "message";
+
+userMessage.innerHTML =
+"<span class='user'>사용자:</span> " + input;
+
+chatBox.appendChild(userMessage);
+
+let reply = "";
+
+// 위험 감정 감지
+
+if(
+input.includes("포기") ||
+input.includes("죽고") ||
+input.includes("너무 힘들") ||
+input.includes("혼자")
+){
+
+reply =
+"전문적인 도움이 필요할 수 있습니다.<br><br>정신건강 상담센터 및 전문기관 상담을 권장합니다.";
+
+}
+
+else{
+
+if(personality === "warm"){
+
+reply =
+"많이 힘들었겠어요. 지금 감정을 이야기해준 것만으로도 충분히 의미 있는 시작이에요.";
+
+}
+
+else if(personality === "real"){
+
+reply =
+"현재 상황의 원인을 하나씩 정리하면서 해결 가능한 부분부터 접근해보는 것이 좋아 보여요.";
+
+}
+
+else if(personality === "calm"){
+
+reply =
+"감정을 천천히 분석해보면 스트레스 원인을 더 명확하게 이해할 수 있습니다.";
+
+}
+
+else if(personality === "friend"){
+
+reply =
+"진짜 많이 지쳤겠다… 그래도 혼자 다 감당하려고 하지 않았으면 좋겠어.";
+
+}
+
+}
+
+let botMessage =
+document.createElement("div");
+
+botMessage.className = "message";
+
+botMessage.innerHTML =
+"<span class='bot'>챗봇:</span> " + reply;
+
+chatBox.appendChild(botMessage);
+
+document.getElementById("userInput").value = "";
+
+}
+
+// 게시판
+
+function addPost(){
+
+let input =
+document.getElementById("postInput");
+
+if(input.value.trim() === ""){
+
+alert("내용을 입력해주세요.");
+return;
+
+}
+
+let post =
+document.createElement("div");
+
+post.className = "post";
+
+post.innerHTML =
+
+"<strong>익명 사용자 😥</strong><br><br>" +
+input.value +
+
+"<br><br><span class='like'>💚 공감 0</span>" +
+
+"<div class='comment-section'>" +
+
+"<textarea placeholder='댓글 작성'></textarea>" +
+
+"<button class='button' onclick='addComment(this)'>댓글 작성</button>" +
+
+"</div>";
+
+document.getElementById("posts")
+.prepend(post);
+
+input.value = "";
+
+}
+
+// 댓글 기능
+
+function addComment(button){
+
+let section =
+button.parentElement;
+
+let textarea =
+section.querySelector("textarea");
+
+if(textarea.value.trim() === ""){
+
+alert("댓글 내용을 입력해주세요.");
+return;
+
+}
+
+let comment =
+document.createElement("div");
+
+comment.className = "comment";
+
+comment.innerHTML =
+"<strong>익명 댓글</strong><br>" +
+textarea.value;
+
+section.appendChild(comment);
+
+textarea.value = "";
+
+}
+
+</script>
+
+</body>
+</html>
